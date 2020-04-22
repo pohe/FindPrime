@@ -22,6 +22,7 @@ namespace FindPrime
             FindPrimesInInterval(2, upper);
             string text = $"Found {_primes.Count} primes in [2; {upper}]";
             Console.WriteLine(text);
+            
         }
 
         public void FindPrimesTask(int upper)
@@ -69,5 +70,25 @@ namespace FindPrime
 
             return isPrime;
         }
+
+        public void FindPrimesPar(int upper)
+        {
+            _primes = new ConcurrentBag<int>();
+            FindPrimesInIntervalPar(2, upper);
+            string textPar = $"Found {_primes.Count} primes in [2; {upper}]";
+            Console.WriteLine(textPar);
+        }
+
+        private void FindPrimesInIntervalPar(int lower, int upper)
+        {
+            Parallel.For(lower, upper, (i) =>
+            {
+                if (IsPrime(i))
+                {
+                    _primes.Add(i);
+                }
+            });
+        }
+
     }
 }

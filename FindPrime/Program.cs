@@ -36,6 +36,9 @@ namespace FindPrime
             PrimeCalcConcurrentBag PCCB = new PrimeCalcConcurrentBag();
             Console.WriteLine("Find prime - ConcurrentBag");
             PCCB.FindPrimesTask(1000000);
+
+            Console.WriteLine("Find prime - ConcurrentBag Parallel.For");
+            PCCB.FindPrimesPar(1000000);
             Console.ReadKey();
         }
     }
