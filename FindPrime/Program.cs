@@ -10,35 +10,36 @@ namespace FindPrime
     {
         static void Main(string[] args)
         {
-            PrimeCalc pc = new PrimeCalc();
+            FindPrimeSeq pc = new FindPrimeSeq();
             Console.WriteLine("Find prime - sekventielt");
             pc.FindPrimes(1000000);
 
 
-            //Console.WriteLine("Find prime - Task1");
-            //pc.FindPrimesTask(1000000);
-            //Console.WriteLine("Find prime - Task2");
-            //pc.FindPrimesTask(1000000);
-            //Console.WriteLine("Find prime - Task3");
-            //pc.FindPrimesTask(1000000);
-            //Console.WriteLine("Find prime - Task4");
-            //pc.FindPrimesTask(1000000);
+            FindPrimeTask tc = new FindPrimeTask();
+            Console.WriteLine("Find prime - Task1");
+            tc.FindPrimesTask(1000000);
+            Console.WriteLine("Find prime - Task2");
+            tc.FindPrimesTask(1000000);
+            Console.WriteLine("Find prime - Task3");
+            tc.FindPrimesTask(1000000);
+            Console.WriteLine("Find prime - Task4");
+            tc.FindPrimesTask(1000000);
+
+            FindPrimeTaskLock lc = new FindPrimeTaskLock();
+            Console.WriteLine("Find prime - Task1 -Lock");
+            lc.FindPrimesTaskLock(1000000);
+            Console.WriteLine("Find prime - Task2 -Lock");
+            lc.FindPrimesTaskLock(1000000);
+            Console.WriteLine("Find prime - Task3 -Lock");
+            lc.FindPrimesTaskLock(1000000);
 
 
-            //Console.WriteLine("Find prime - Task1 -Lock");
-            //pc.FindPrimesTaskLock(1000000);
-            //Console.WriteLine("Find prime - Task2 -Lock");
-            //pc.FindPrimesTaskLock(1000000);
-            //Console.WriteLine("Find prime - Task3 -Lock");
-            //pc.FindPrimesTaskLock(1000000);
+            PrimeCalcConcurrentBag PCCB = new PrimeCalcConcurrentBag();
+            Console.WriteLine("Find prime - ConcurrentBag");
+            PCCB.FindPrimesTask(1000000);
 
-
-            //PrimeCalcConcurrentBag PCCB = new PrimeCalcConcurrentBag();
-            //Console.WriteLine("Find prime - ConcurrentBag");
-            //PCCB.FindPrimesTask(1000000);
-
-            //Console.WriteLine("Find prime - ConcurrentBag Parallel.For");
-            //PCCB.FindPrimesPar(1000000);
+            Console.WriteLine("Find prime - ConcurrentBag Parallel.For");
+            PCCB.FindPrimesPar(1000000);
             Console.ReadKey();
         }
     }

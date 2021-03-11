@@ -42,8 +42,10 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="FindPrimeSeq.cs" />
+    <Compile Include="FindPrimeTask.cs" />
+    <Compile Include="FindPrimeTaskLock.cs" />
     <Compile Include="PrimeCalcConcurrentBag.cs" />
-    <Compile Include="PrimeCalc.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

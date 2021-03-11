@@ -1,32 +1,22 @@
 ﻿using System;
-using System.Collections.Concurrent;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
 
 namespace FindPrime
 {
-    class PrimeCalcConcurrentBag
+    public class FindPrimeTask
     {
-        private ConcurrentBag<int> _primes;
+        private List<int> _primes;
 
-        public PrimeCalcConcurrentBag()
+        private Object _lock = new object();
+        public FindPrimeTask()
         {
-            _primes = new ConcurrentBag<int>();
-        }
-
-        public void FindPrimes(int upper)
-        {
-           // _primes.Clear;
-            FindPrimesInInterval(2, upper);
-            string text = $"Found {_primes.Count} primes in [2; {upper}]";
-            Console.WriteLine(text);
+            _primes = new List<int>();
         }
 
         public void FindPrimesTask(int upper)
         {
-            //_primes.Clear();
+            _primes.Clear();
             int middle = upper / 2;
             Task t1 = Task.Run(() => FindPrimesInInterval(2, middle));
             Task t2 = Task.Run(() => FindPrimesInInterval(middle + 1, upper));
@@ -35,9 +25,6 @@ namespace FindPrime
             string text = $"Found {_primes.Count} primes in [2; {upper}]";
             Console.WriteLine(text);
         }
-
-       
-
 
         private void FindPrimesInInterval(int lower, int upper)
         {
@@ -51,7 +38,6 @@ namespace FindPrime
             }
         }
 
-        
         private bool IsPrime(int number)
         {
             if (number < 4)
@@ -69,25 +55,5 @@ namespace FindPrime
 
             return isPrime;
         }
-
-        public void FindPrimesPar(int upper)
-        {
-            _primes = new ConcurrentBag<int>();
-            FindPrimesInIntervalPar(2, upper);
-            string textPar = $"Found {_primes.Count} primes in [2; {upper}]";
-            Console.WriteLine(textPar);
-        }
-
-        private void FindPrimesInIntervalPar(int lower, int upper)
-        {
-            Parallel.For(lower, upper, (i) =>
-            {
-                if (IsPrime(i))
-                {
-                    _primes.Add(i);
-                }
-            });
-        }
-
     }
 }
