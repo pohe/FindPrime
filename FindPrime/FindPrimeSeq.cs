@@ -10,7 +10,6 @@ namespace FindPrime
     {
         private List<int> _primes;
 
-       
         public FindPrimeSeq()
         {
             _primes = new List<int>();

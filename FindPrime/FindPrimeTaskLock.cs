@@ -14,8 +14,6 @@ namespace FindPrime
         {
             _primes = new List<int>();
         }
-
-
         public void FindPrimesTaskLock(int upper)
         {
             _primes.Clear();

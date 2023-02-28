@@ -8,7 +8,6 @@ namespace FindPrime
     {
         private List<int> _primes;
 
-        private Object _lock = new object();
         public FindPrimeTask()
         {
             _primes = new List<int>();
